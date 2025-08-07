@@ -9,7 +9,6 @@ Este é um projeto de uma página de "link na bio" pessoal, desenvolvida com um 
   - ✨ **Efeito de Decodificação:** A bio ("Data Driver | Full Stack Developer") possui uma animação de texto "scramble" em JavaScript, que simula uma decodificação em um terminal.
   - 📱 **Totalmente Responsivo:** O layout se adapta perfeitamente a telas de desktops, tablets e celulares.
   - 🔗 **Seções de Links:** Links personalizáveis para projetos principais e ícones de redes sociais no rodapé.
-  - 
 -----
 ### 💻 Tecnologias Utilizadas
 
