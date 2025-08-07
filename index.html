@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio | Will</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <header class="profile-header">
+        <img src="profile.png" class="profile-photo" />
+        <h1 class="profile-name">Will</h1>
+        <p id="bio" class="profile-bio"></p>
+      </header>
+
+      <section class="links-section">
+        <a href="#" class="link-button">
+          <img
+            src="https://img.icons8.com/color/38/microsoft-excel-2019--v1.png"
+          />
+          Loja de Excel
+        </a>
+
+        <a href="#" class="link-button">
+          <img src="https://img.icons8.com/color/38/power-bi-2021.png" />
+          Loja PowerBI
+        </a>
+
+        <a href="#" class="link-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="color: #2563eb"
+          >
+            <path
+              d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"
+            ></path>
+          </svg>
+          AudioCasti | Podcast em áudio
+        </a>
+
+        <a href="#" class="link-button">
+          <img src="https://img.icons8.com/fluency/38/avocado.png" />
+          Oni | Seu nutricionista virtual
+        </a>
+
+        <a href="#" class="link-button">
+          <img src="wmtools.png" />
+          WM Tools | Loja de Ferramentas
+        </a>
+      </section>
+
+      <footer class="social-links">
+        <a href="https://www.instagram.com/will.aam/#">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/wlliaam">
+          <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="https://github.com/will-aam">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://pinterest.com/will_aam/">
+          <i class="fab fa-pinterest"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-youtube"></i>
+        </a>
+
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 256 256"
+          >
+            <g
+              fill="#ffffff"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+            >
+              <g transform="scale(5.12,5.12)">
+                <path
+                  d="M23.5,0v4.5h-4v2h4v4.5h2v-4.5h4v-2h-4v-4.5zM11,5v6h-6v2h6v6h2v-6h6v-2h-6v-6zM36,5v6h-6v2h6v6h2v-6h6v-2h-6v-6zM23,16v7h-7v3h7v7h3v-7h7v-3h-7v-7zM5,19v4.5h-4v2h4v4.5h2v-4.5h4v-2h-4v-4.5zM43,19v4.5h-4v2h4v4.5h2v-4.5h4v-2h-4v-4.5zM11,29v6h-6v2h6v6h2v-6h6v-2h-6v-6zM36,29v6h-6v2h6v6h2v-6h6v-2h-6v-6zM23.5,38v4.5h-4v2h4v4.5h2v-4.5h4v-2h-4v-4.5z"
+                />
+              </g>
+            </g>
+          </svg>
+        </a>
+      </footer>
+    </main>
+
+    <script>
+      class TextScramble {
+        constructor(el) {
+          this.el = el;
+          this.chars = "!<>-_\¨*&(#@(\/[!@¨&*()]{}—=+*^?#________";
+          this.update = this.update.bind(this);
+        }
+        setText(newText) {
+          const oldText = this.el.innerText;
+          const length = Math.max(oldText.length, newText.length);
+          const promise = new Promise((resolve) => (this.resolve = resolve));
+          this.queue = [];
+          for (let i = 0; i < length; i++) {
+            const from = oldText[i] || "";
+            const to = newText[i] || "";
+            const start = Math.floor(Math.random() * 40);
+            const end = start + Math.floor(Math.random() * 40);
+            this.queue.push({
+              from,
+              to,
+              start,
+              end,
+            });
+          }
+          cancelAnimationFrame(this.frameRequest);
+          this.frame = 0;
+          this.update();
+          return promise;
+        }
+        update() {
+          let output = "";
+          let complete = 0;
+          for (let i = 0, n = this.queue.length; i < n; i++) {
+            let { from, to, start, end, char } = this.queue[i];
+            if (this.frame >= end) {
+              complete++;
+              output += to;
+            } else if (this.frame >= start) {
+              if (!char || Math.random() < 0.28) {
+                char = this.randomChar();
+                this.queue[i].char = char;
+              }
+              output += `<span class="dud">${char}</span>`;
+            } else {
+              output += from;
+            }
+          }
+          this.el.innerHTML = output;
+          if (complete === this.queue.length) {
+            this.resolve();
+          } else {
+            this.frameRequest = requestAnimationFrame(this.update);
+            this.frame++;
+          }
+        }
+        randomChar() {
+          return this.chars[Math.floor(Math.random() * this.chars.length)];
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("bio");
+        const fx = new TextScramble(el);
+        const text = "Data Driver | Full Stack Developer";
+        fx.setText(text);
+      });
+    </script>
+  </body>
+</html>
