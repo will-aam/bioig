@@ -89,10 +89,10 @@ body::before {
   transition: transform 0.4s ease-in-out, border-color 0.4s ease-in-out;
 }
 
-.profile-photo:hover {
+/* .profile-photo:hover {
   transform: scale(1.05);
   border-color: var(--secondary-neon);
-}
+} */
 
 .profile-name {
   font-size: 2.5em;
@@ -129,7 +129,8 @@ body::before {
   height: 65px;
   border: 1px solid var(--panel-border);
   border-radius: 12px;
-  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,6 +141,31 @@ body::before {
 .link-button:hover {
   transform: translateY(-3px);
   border-color: var(--primary-neon);
+}
+
+/* --- NOVO EFEITO PARA O BOTÃO PORTFÓLIO --- */
+
+/* 1. Keyframes para a animação de pulso neon */
+@keyframes neon-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.7), 0 0 10px rgba(0, 170, 255, 0.5),
+      0 0 15px rgba(170, 0, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.9), 0 0 20px rgba(0, 170, 255, 0.7),
+      0 0 30px rgba(170, 0, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.7), 0 0 10px rgba(0, 170, 255, 0.5),
+      0 0 15px rgba(170, 0, 255, 0.3);
+  }
+}
+
+/* 2. Classe para aplicar a animação ao botão específico */
+.portfolio-highlight {
+  border-color: var(--primary-neon); /* Borda mais destacada */
+  /* Aplica a animação: nome, duração, tipo e repetição */
+  animation: neon-pulse 4s infinite ease-in-out;
 }
 
 .link-button img,
@@ -174,6 +200,15 @@ footer {
   transform: translateY(-5px) scale(1.1);
 }
 
+.copyrigt {
+  font-size: 0.8em;
+  color: var(--text-color);
+  text-align: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+  font-family: "Courier New", Courier, monospace;
+}
+
 @media (max-width: 768px) {
   body {
     padding: 30px 15px;
@@ -205,13 +240,4 @@ footer {
     align-items: center;
     gap: 20px;
   }
-}
-
-.copyrigt {
-  font-size: 0.8em;
-  color: var(--text-color);
-  text-align: center;
-  opacity: 0.7;
-  transition: opacity 0.3s ease-in-out;
-  font-family: "Courier New", Courier, monospace;
 }
