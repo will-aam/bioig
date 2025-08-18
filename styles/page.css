@@ -30,38 +30,6 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(
-      circle at 20% 20%,
-      var(--primary-neon),
-      transparent 30%
-    ),
-    radial-gradient(circle at 80% 70%, var(--secondary-neon), transparent 30%);
-  background-size: 200% 200%;
-  animation: background-flow 30s ease-in-out infinite;
-  z-index: -1;
-  opacity: 0.1;
-  filter: blur(80px);
-}
-
-@keyframes background-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .container {
   width: 100%;
   max-width: 600px;
@@ -69,7 +37,7 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 20px; /* Ajustado o espaçamento geral */
   z-index: 1;
 }
 
@@ -85,7 +53,6 @@ body::before {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  /* background-image: url("profile-will.png"); */
   background-size: cover;
   background-position: 50% 20%;
   background-repeat: no-repeat;
@@ -113,13 +80,116 @@ body::before {
   min-height: 1.5em;
 }
 
-.links-section {
-  width: 100%;
+.social-links {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 25px;
+  justify-content: flex-start; /* Centraliza à esquerda */
+  margin-top: 10px; /* Margem ajustada */
 }
 
+.social-links a {
+  color: var(--text-color);
+  font-size: 2.2em;
+  transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.social-links a:hover {
+  transform: translateY(-5px) scale(1.1);
+  color: var(--primary-neon);
+}
+
+/* ESTILOS DA NAVEGAÇÃO POR ABAS */
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.tab-link {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-family: "Oxanium", sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+  padding: 5px;
+}
+
+.tab-link.active {
+  opacity: 1;
+  color: var(--primary-neon);
+}
+
+.tab-separator {
+  font-size: 1.2em;
+  color: var(--panel-border);
+}
+
+/* ESTILOS DOS CONTEÚDOS DAS ABAS */
+.content-container {
+  width: 100%;
+}
+
+.content-section {
+  display: none; /* Esconde as seções */
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+  display: flex; /* Mostra a seção ativa */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ESTILOS DA SEÇÃO "SOBRE" */
+#sobre {
+  background-color: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+#sobre h2 {
+  color: var(--primary-neon);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#sobre p {
+  line-height: 1.6;
+  font-size: 1.05em;
+}
+
+#sobre p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+#bio {
+  text-align: center;
+}
+
+/* ESTILOS DOS BOTÕES DE LINK */
 .link-button {
   background-color: var(--panel-bg);
   backdrop-filter: blur(10px);
@@ -141,13 +211,18 @@ body::before {
 }
 
 .link-button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   border-color: var(--primary-neon);
 }
 
-/* --- NOVO EFEITO PARA O BOTÃO PORTFÓLIO --- */
+/* ESTILO PARA OS ÍCONES DENTRO DOS BOTÕES */
+.link-button i {
+  font-size: 1.5em;
+  width: 30px;
+  text-align: center;
+  margin-right: 10px;
+}
 
-/* 1. Keyframes para a animação de pulso neon */
 @keyframes neon-pulse {
   0% {
     box-shadow: 0 0 5px rgba(0, 170, 255, 0.7), 0 0 10px rgba(0, 170, 255, 0.5),
@@ -163,46 +238,20 @@ body::before {
   }
 }
 
-/* 2. Classe para aplicar a animação ao botão específico */
 .portfolio-highlight {
-  border-color: var(--primary-neon); /* Borda mais destacada */
-  /* Aplica a animação: nome, duração, tipo e repetição */
+  border-color: var(--primary-neon);
   animation: neon-pulse 4s infinite ease-in-out;
-}
-
-.link-button img,
-.link-button svg {
-  height: 30px;
-  width: 30px;
-  object-fit: contain;
-  margin-right: 15px;
-}
-
-.social-links {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  margin-top: 20px;
 }
 
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.social-links a {
-  color: var(--text-color);
-  font-size: 2.2em;
-  transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-.social-links a:hover {
-  transform: translateY(-5px) scale(1.1);
-}
-
-.copyrigt {
+.copyright {
   font-size: 0.8em;
   color: var(--text-color);
   text-align: center;
@@ -230,16 +279,9 @@ footer {
     font-size: 1em;
   }
 
-  .link-button img,
-  .link-button svg {
-    height: 28px;
-    width: 28px;
-    margin-right: 10px;
-  }
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  .link-button i {
+    font-size: 1.4em;
+    width: 35px;
+    margin-right: 8px;
   }
 }
