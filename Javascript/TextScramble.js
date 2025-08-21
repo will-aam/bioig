@@ -1,7 +1,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = "!<>-_¨*&(#@(/[!@¨&*()]{}—=+*^?#________";
+    this.chars = "!<(*&%$)>-_¨*&(#@(/[!@¨&*()]{}—=+*^?#___";
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -12,8 +12,8 @@ class TextScramble {
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || "";
       const to = newText[i] || "";
-      const start = Math.floor(Math.random() * 40);
-      const end = start + Math.floor(Math.random() * 40);
+      const start = Math.floor(Math.random() * 50);
+      const end = start + Math.floor(Math.random() * 50);
       this.queue.push({
         from,
         to,
@@ -60,7 +60,7 @@ class TextScramble {
 document.addEventListener("DOMContentLoaded", () => {
   const el = document.getElementById("bio");
   const fx = new TextScramble(el);
-  const text = "Data Analyst | Full Stack Developer";
+  const text = "Data Analyst | Full Stack Dev";
 
   // Ativa o efeito ao clicar na aba "Sobre"
   const sobreTab = document.querySelector('.tab-link[data-tab="sobre"]');
