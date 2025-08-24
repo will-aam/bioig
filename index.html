@@ -4,27 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bio | Will</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
-  <!-- Início -->
   <body>
     <main class="container">
-      <!-- Cabeçalho com foto, nome, bio e links sociais -->
       <header class="profile-header">
-        <img class="profile-photo" src="profile-will.png" />
+        <img
+          class="profile-photo"
+          src="profile-will.png"
+          alt="Foto de perfil do Will"
+        />
         <h1 class="profile-name">@will.aam</h1>
-        <!-- Links Sociais -->
+
         <div class="social-links">
           <a href="https://www.instagram.com/will.aam/#" aria-label="Instagram"
             ><i class="fab fa-instagram"></i
@@ -57,49 +61,60 @@
         </div>
       </header>
 
-      <!-- Segunda parte -->
-      <!-- Navegação das abas (Links | Sobre) -->
       <nav class="tabs-nav">
         <button class="tab-link active" data-tab="links">Links</button>
         <span class="tab-separator">|</span>
         <button class="tab-link" data-tab="sobre">Sobre</button>
       </nav>
 
-      <!-- Conteúdo das abas -->
       <div class="content-container">
-        <!-- Seção de Links -->
         <section id="links" class="content-section active">
-          <!-- Portfólio sem ícone -->
-          <a href="#" class="link-button portfolio-highlight">
-            <span class="portfolio-highlight">Portfólio</span>
-          </a>
-          <a href="#" class="link-button">
-            <i data-lucide="shopping-bag"></i>
-            <span>Syntek | Planilhas e Dashboards</span>
-          </a>
-          <a href="#" class="link-button">
-            <i data-lucide="shopping-bag"></i>
-            <span>WM Tools | Loja de Ferramentas</span>
-          </a>
-          <a href="#" class="link-button">
-            <i data-lucide="audio-lines"></i>
-            <span>PlayCast | Podcast em áudio</span>
-          </a>
-          <a href="#" class="link-button">
-            <i data-lucide="salad"></i>
-            <span>Ony | Guia de Nutrição</span>
-          </a>
-          <a href="https://txtarchived.netlify.app/" class="link-button">
-            <i data-lucide="notebook-pen"></i>
-            <span>Blog de poesia</span>
-          </a>
+          <div class="portfolio-container">
+            <a
+              href="#"
+              id="portfolio-toggle"
+              class="link-button portfolio-highlight"
+            >
+              <span>Portfólio</span>
+            </a>
+
+            <div id="portfolio-links" class="portfolio-dropdown">
+              <div class="portfolio-content">
+                <a href="#" class="link-button">
+                  <i data-lucide="bar-chart-3"></i>
+                  <span>Data Analyst</span>
+                </a>
+                <a href="#" class="link-button">
+                  <i data-lucide="code"></i>
+                  <span>Full Stack Dev</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="link-button"
+            ><i data-lucide="shopping-bag"></i
+            ><span>Syntek | Planilhas e Dashboards</span></a
+          >
+          <a href="#" class="link-button"
+            ><i data-lucide="shopping-bag"></i
+            ><span>WM Tools | Loja de Ferramentas</span></a
+          >
+          <a href="#" class="link-button"
+            ><i data-lucide="audio-lines"></i
+            ><span>PlayCast | Podcast em áudio</span></a
+          >
+          <a href="#" class="link-button"
+            ><i data-lucide="salad"></i><span>Ony | Guia de Nutrição</span></a
+          >
+          <a href="https://txtarchived.netlify.app/" class="link-button"
+            ><i data-lucide="notebook-pen"></i><span>Blog de poesia</span></a
+          >
         </section>
 
-        <!-- Seção Sobre -->
         <section id="sobre" class="content-section">
           <h2>Sobre Mim</h2>
           <p id="bio" class="profile-bio" style="color: #188fd9"></p>
-
           <p>
             Olá! Sou o Will, um apaixonado por tecnologia e análise de dados.
             Atualmente trabalho como Analista de Dados e desenvolvo projetos
@@ -112,17 +127,19 @@
         </section>
       </div>
 
-      <!-- Rodapé -->
       <footer>
-        <strong class="copyright">&copy; 2025 William Mendes</strong>
+        <p class="copyright">&copy; 2025 William Mendes</p>
       </footer>
     </main>
 
     <script src="Javascript/TextScramble.js"></script>
+    <script src="Javascript/aba.js"></script>
+    <script src="Javascript/dropdown.js"></script>
+
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
+      // Inicializa os ícones do Lucide após o carregamento da página
       lucide.createIcons();
     </script>
-    <script src="Javascript/aba.js"></script>
   </body>
 </html>
